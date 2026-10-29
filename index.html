@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Glasspay Checkout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Background: dark silk with gold light streaks -->
+  <div class="bg" aria-hidden="true">
+    <svg class="bg-waves" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#3a2410" stop-opacity="0" />
+          <stop offset=".45" stop-color="#c98a3c" />
+          <stop offset=".6" stop-color="#ffd59a" />
+          <stop offset="1" stop-color="#5b3613" stop-opacity="0" />
+        </linearGradient>
+        <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#ffffff" stop-opacity="0" />
+          <stop offset=".5" stop-color="#d8d2cc" stop-opacity=".55" />
+          <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+        </linearGradient>
+        <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#ffe2b0" stop-opacity="0" />
+          <stop offset=".35" stop-color="#ffc977" stop-opacity=".9" />
+          <stop offset=".55" stop-color="#fff3dc" />
+          <stop offset=".8" stop-color="#d98d3a" stop-opacity=".7" />
+          <stop offset="1" stop-color="#ffe2b0" stop-opacity="0" />
+        </linearGradient>
+        <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#fff" stop-opacity="0" />
+          <stop offset=".4" stop-color="#f2eee8" stop-opacity=".75" />
+          <stop offset=".7" stop-color="#8a847e" stop-opacity=".4" />
+          <stop offset="1" stop-color="#fff" stop-opacity="0" />
+        </linearGradient>
+        <linearGradient id="silk" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2a1f17" />
+          <stop offset=".5" stop-color="#0d0a09" />
+          <stop offset="1" stop-color="#1c1510" />
+        </linearGradient>
+        <filter id="blur-lg" filterUnits="userSpaceOnUse" x="-300" y="-300" width="2040" height="1500"><feGaussianBlur stdDeviation="30" /></filter>
+        <filter id="blur-md" filterUnits="userSpaceOnUse" x="-300" y="-300" width="2040" height="1500"><feGaussianBlur stdDeviation="9" /></filter>
+        <filter id="blur-sm" filterUnits="userSpaceOnUse" x="-300" y="-300" width="2040" height="1500"><feGaussianBlur stdDeviation="2" /></filter>
+        <filter id="blur-xs" filterUnits="userSpaceOnUse" x="-300" y="-300" width="2040" height="1500"><feGaussianBlur stdDeviation=".6" /></filter>
+      </defs>
+
+      <!-- ambient warm glow -->
+      <path d="M-100 150 C 300 40, 700 380, 1540 110" stroke="url(#gold)" stroke-width="170" fill="none" filter="url(#blur-lg)" opacity=".5" />
+      <path d="M-120 560 C 260 320, 820 840, 1560 380" stroke="url(#gold)" stroke-width="200" fill="none" filter="url(#blur-lg)" opacity=".35" />
+
+      <!-- silk folds: dark body + glossy rim -->
+      <path d="M-120 90 C 330 0, 730 330, 1560 70" stroke="url(#silk)" stroke-width="70" fill="none" opacity=".9" />
+      <path d="M-120 60 C 330 -30, 730 300, 1560 40" stroke="url(#edge)" stroke-width="3" fill="none" filter="url(#blur-sm)" />
+      <path d="M-120 58 C 330 -32, 730 298, 1560 38" stroke="#fff6e6" stroke-width="1" fill="none" filter="url(#blur-xs)" opacity=".8" />
+
+      <path d="M-100 210 C 360 110, 760 470, 1560 230" stroke="url(#edge)" stroke-width="2" fill="none" filter="url(#blur-xs)" opacity=".75" />
+      <path d="M-100 240 C 380 150, 780 500, 1560 270" stroke="url(#edge)" stroke-width="14" fill="none" filter="url(#blur-md)" opacity=".35" />
+
+      <path d="M-140 500 C 250 290, 820 800, 1580 350" stroke="url(#silk)" stroke-width="90" fill="none" opacity=".85" />
+      <path d="M-140 455 C 250 245, 820 755, 1580 305" stroke="url(#edge)" stroke-width="4" fill="none" filter="url(#blur-sm)" />
+      <path d="M-140 453 C 250 243, 820 753, 1580 303" stroke="#fff6e6" stroke-width="1.2" fill="none" filter="url(#blur-xs)" opacity=".85" />
+      <path d="M-140 600 C 280 400, 860 880, 1580 470" stroke="url(#edge)" stroke-width="1.5" fill="none" filter="url(#blur-xs)" opacity=".55" />
+
+      <!-- chrome sweep bottom-left -->
+      <path d="M-160 760 C 260 560, 760 960, 1560 760" stroke="url(#chrome)" stroke-width="110" fill="none" filter="url(#blur-md)" opacity=".55" />
+      <path d="M-160 705 C 260 505, 760 905, 1560 705" stroke="url(#chrome)" stroke-width="2" fill="none" filter="url(#blur-xs)" />
+      <path d="M-200 900 C 200 640, 520 760, 900 1000" stroke="url(#chrome)" stroke-width="3" fill="none" filter="url(#blur-xs)" opacity=".7" />
+      <path d="M220 -40 C 520 240, 980 120, 1520 520" stroke="url(#chrome)" stroke-width="1.5" fill="none" filter="url(#blur-xs)" opacity=".5" />
+    </svg>
+    <div class="bg-vignette"></div>
+  </div>
+
+  <main class="stage">
+
+    <div class="panel-wrap">
+    <!-- glass shards: broken-off corners sitting parallel to the panel's chamfers -->
+    <span class="shard shard-tl" aria-hidden="true"></span>
+    <span class="shard shard-br" aria-hidden="true"></span>
+
+    <section class="panel-frame">
+      <div class="panel">
+        <header class="topbar">
+          <a class="brand" href="#">
+            <span class="brand-mark">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+            </span>
+            <span class="brand-name">GLASSPAY</span>
+            <span class="brand-sub">CHECKOUT</span>
+          </a>
+
+          <ol class="steps" id="steps" aria-label="Checkout progress">
+            <li class="step" data-step="cart"><button type="button"><span class="step-dot">1</span>Cart</button></li>
+            <li class="step" data-step="shipping"><button type="button"><span class="step-dot">2</span>Shipping</button></li>
+            <li class="step" data-step="payment"><button type="button"><span class="step-dot">3</span>Payment</button></li>
+          </ol>
+        </header>
+
+        <div class="views" id="views">
+          <!-- STEP 1: CART -->
+          <div class="content view view-cart" data-view="cart">
+            <div class="form cart-main">
+              <div class="view-head">
+                <h1>Your Cart</h1>
+                <span class="pill" id="cartCount">0 items</span>
+              </div>
+              <p class="lead">Review your items before heading to shipping.</p>
+              <ul class="cart-list" id="cartList"></ul>
+              <div class="cart-empty" id="cartEmpty" hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg>
+                <strong>Your cart is empty</strong>
+                <span>Items you remove will disappear from here.</span>
+                <button class="chip-btn" type="button" id="restoreCart">Restore sample items</button>
+              </div>
+            </div>
+
+            <aside class="summary">
+              <h2>Order Summary</h2>
+              <form class="promo" id="promoForm" novalidate>
+                <span class="input">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
+                  <input id="promoInput" type="text" placeholder="Promo code (try GLASS10)" autocomplete="off" />
+                </span>
+                <button class="chip-btn" type="submit">Apply</button>
+              </form>
+              <p class="promo-msg" id="promoMsg" aria-live="polite"></p>
+              <dl class="summary-lines" data-summary></dl>
+              <button class="pay-btn" id="toShipping" type="button">
+                <span class="pay-label">CONTINUE TO SHIPPING</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+              <a class="chip-btn back-btn" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Return to Portal</a>
+            </aside>
+          </div>
+
+          <!-- STEP 2: SHIPPING -->
+          <div class="content view view-ship" data-view="shipping" hidden>
+            <form class="form ship-main" id="shipForm" novalidate>
+              <h1>Shipping Details</h1>
+              <p class="lead">Where should we deliver your order?</p>
+
+              <div class="field-row">
+                <label class="field">
+                  <span class="field-label">Full Name</span>
+                  <span class="input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><input type="text" autocomplete="name" placeholder="Recipient name" value="Alex Morgan" required /></span>
+                </label>
+                <label class="field">
+                  <span class="field-label">Phone</span>
+                  <span class="input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg><input type="tel" autocomplete="tel" placeholder="+1 555 000 0000" value="+1 415 555 0132" required /></span>
+                </label>
+              </div>
+
+              <label class="field">
+                <span class="field-label">Street Address</span>
+                <span class="input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><input type="text" autocomplete="street-address" placeholder="Street, building, apartment" value="221 Golden Gate Ave, Apt 12" required /></span>
+              </label>
+
+              <div class="field-row field-row-3">
+                <label class="field">
+                  <span class="field-label">City</span>
+                  <span class="input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l6-4v17M11 21V10h8v11M8 10v.01M8 14v.01M15 14v.01M15 17v.01"/></svg><input type="text" autocomplete="address-level2" placeholder="City" value="San Francisco" required /></span>
+                </label>
+                <label class="field">
+                  <span class="field-label">Postal Code</span>
+                  <span class="input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><input type="text" inputmode="numeric" autocomplete="postal-code" placeholder="00000" value="94102" required /></span>
+                </label>
+                <label class="field">
+                  <span class="field-label">Country</span>
+                  <span class="input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+                    <select autocomplete="country-name">
+                      <option>United States</option>
+                      <option>Indonesia</option>
+                      <option>Singapore</option>
+                      <option>Japan</option>
+                      <option>United Kingdom</option>
+                    </select>
+                  </span>
+                </label>
+              </div>
+
+              <span class="field-label">Delivery Method</span>
+              <div class="methods" role="radiogroup" aria-label="Delivery method">
+                <label class="method">
+                  <input type="radio" name="ship" value="0" data-label="Standard" checked />
+                  <span class="method-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></span>
+                  <span class="method-text"><strong>Standard</strong><small>5–7 business days</small></span>
+                  <span class="method-price">Free</span>
+                </label>
+                <label class="method">
+                  <input type="radio" name="ship" value="15" data-label="Express" />
+                  <span class="method-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+                  <span class="method-text"><strong>Express</strong><small>2–3 business days</small></span>
+                  <span class="method-price">$15.00</span>
+                </label>
+                <label class="method">
+                  <input type="radio" name="ship" value="35" data-label="Overnight" />
+                  <span class="method-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M9 15l-3-3a12 12 0 0 1 12-9 12 12 0 0 1-9 12z"/><circle cx="15" cy="9" r="1.5"/></svg></span>
+                  <span class="method-text"><strong>Overnight</strong><small>Next business day</small></span>
+                  <span class="method-price">$35.00</span>
+                </label>
+              </div>
+            </form>
+
+            <aside class="summary">
+              <h2>Order Summary</h2>
+              <ul class="mini-items" id="miniItems"></ul>
+              <dl class="summary-lines" data-summary></dl>
+              <button class="pay-btn" type="submit" form="shipForm">
+                <span class="pay-label">CONTINUE TO PAYMENT</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+              <button class="chip-btn back-btn" type="button" data-go="cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Back to Cart</button>
+            </aside>
+          </div>
+
+          <!-- STEP 3: PAYMENT -->
+          <div class="content view" data-view="payment" id="paymentView" hidden>
+          <!-- LEFT: card preview -->
+          <div class="card-col">
+            <div class="card-scene">
+              <div class="card" id="card">
+                <!-- front -->
+                <div class="card-face card-front">
+                  <div class="card-tint"></div>
+                  <div class="card-inner">
+                    <div class="card-row">
+                      <div class="chip-wrap">
+                        <span class="chip"></span>
+                        <svg class="nfc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8.5 8.5a5 5 0 0 1 0 7"/><path d="M12 6a9 9 0 0 1 0 12"/><path d="M15.5 3.5a13 13 0 0 1 0 17"/></svg>
+                      </div>
+                      <span class="tier">PLATINUM</span>
+                    </div>
+                    <div class="card-number" id="cardNumber">5645 6456 5465 3434</div>
+                    <div class="card-row card-bottom">
+                      <div>
+                        <span class="card-label">Cardholder Name</span>
+                        <span class="card-value" id="cardName">ALEX MORGAN</span>
+                      </div>
+                      <div>
+                        <span class="card-label">Expires</span>
+                        <span class="card-value mono" id="cardExpiry">12/28</span>
+                      </div>
+                      <span class="card-brand" id="cardBrand">VISA</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- back -->
+                <div class="card-face card-back">
+                  <div class="card-tint"></div>
+                  <div class="card-inner back-inner">
+                    <div class="magstripe"></div>
+                    <div class="sig-row">
+                      <div class="sig"></div>
+                      <div class="cvv-box"><span class="card-label">CVV</span><span class="mono" id="cardCvv">•••</span></div>
+                    </div>
+                    <p class="back-note">Authorized signature — not valid unless signed. Use of this card is subject to the cardholder agreement.</p>
+                    <span class="card-brand back-brand" id="cardBrandBack">VISA</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-glow" aria-hidden="true"></div>
+            </div>
+
+            <button class="chip-btn" id="flipBtn" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+              <span id="flipLabel">Flip to CVV</span>
+            </button>
+
+            <div class="trust">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ok"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>256-Bit SSL Encrypted</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="warn"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>PCI-DSS Level 1</span>
+            </div>
+
+            <!-- Processing / success state (shown after Pay) -->
+            <div class="status" id="status" aria-live="polite">
+              <div class="st st-processing">
+                <span class="spinner" aria-hidden="true"></span>
+                <p>Processing Secure Transaction…</p>
+              </div>
+              <div class="st st-success">
+                <svg class="check" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23"/><path d="m15 27 7 7 15-16"/></svg>
+                <h2>Payment Successful!</h2>
+                <p>Your payment of <b id="paidAmount">$1,234.00</b> was processed securely.</p>
+                <button class="chip-btn" id="againBtn" type="button">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+                  Start New Order
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: form -->
+          <form class="form" id="payForm" novalidate>
+            <h1>Payment Details</h1>
+            <p class="lead">Enter your card credentials to complete transaction.</p>
+
+            <label class="field">
+              <span class="field-label">Cardholder Name</span>
+              <span class="input">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+                <input id="inName" type="text" autocomplete="cc-name" placeholder="Full name on card" value="Alex Morgan" />
+              </span>
+            </label>
+
+            <label class="field">
+              <span class="field-label">Card Number</span>
+              <span class="input">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+                <input id="inNumber" class="mono" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" value="5645 6456 5465 3434" />
+                <span class="input-tag" id="inBrand">VISA</span>
+              </span>
+            </label>
+
+            <div class="field-row">
+              <label class="field">
+                <span class="field-label">Expiry Date</span>
+                <span class="input">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+                  <input id="inExpiry" class="mono" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/YY" value="12/28" />
+                </span>
+              </label>
+              <label class="field">
+                <span class="field-label">CVV / CVC</span>
+                <span class="input">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                  <input id="inCvv" class="mono" type="password" inputmode="numeric" autocomplete="cc-csc" placeholder="•••" maxlength="4" />
+                  <button class="icon-btn" id="eyeBtn" type="button" aria-label="Show CVV">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                  </button>
+                </span>
+              </label>
+            </div>
+
+            <div class="total">
+              <span>Total Payment Amount:</span>
+              <strong id="payTotal">$1,234.00</strong>
+            </div>
+
+            <button class="pay-btn" id="payBtn" type="submit">
+              <span class="pay-label" id="payLabel">PAY $1,234.00 NOW</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+
+            <button class="chip-btn back-btn" type="button" data-go="shipping">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+              Back to Shipping
+            </button>
+          </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
